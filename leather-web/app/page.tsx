@@ -112,7 +112,7 @@ export default function Home() {
 
       {/* Navigation Bar */}
       <nav className="fixed top-5 inset-x-0 max-w-7xl mx-auto px-4 z-50">
-        <div className="bg-[#0E0F15]/85 backdrop-blur-2xl border border-white/10 rounded-2xl px-6 py-4 flex items-center justify-between shadow-2xl shadow-black/90">
+        <div className="bg-[#0E0F15]/85 backdrop-blur-2xl border border-white/10 rounded-2xl px-6 py-4 flex items-center justify-between shadow-2xl shadow-black/95">
           
           {/* Brand Logo & Name */}
           <div className="flex items-center gap-3 pr-6">
@@ -155,11 +155,51 @@ export default function Home() {
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-            className="md:hidden text-neutral-300 hover:text-white"
+            className="md:hidden text-neutral-300 hover:text-white p-2 rounded-lg bg-white/5 border border-white/10"
+            aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? <X /> : <Menu />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden mt-2 bg-[#0E0F15]/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-6 shadow-2xl shadow-black flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-300">
+            <div className="flex flex-col gap-3 text-xs uppercase tracking-widest font-semibold text-neutral-300 border-b border-white/10 pb-4">
+              <a 
+                href="#collection" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-white transition-colors py-2"
+              >
+                Collection
+              </a>
+              <a 
+                href="#custom-craft" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-white transition-colors py-2"
+              >
+                Bespoke Tailoring
+              </a>
+            </div>
+
+            <div className="flex flex-col gap-3 pt-2">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold px-4 py-3 rounded-xl text-xs uppercase tracking-wider transition-all"
+              >
+                <Mail className="w-4 h-4 text-neutral-300" /> Email Support
+              </a>
+              <a
+                href={`https://wa.me/${siteConfig.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-white hover:bg-neutral-200 text-black font-extrabold px-4 py-3 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg shadow-white/5"
+              >
+                <MessageCircle className="w-4 h-4 fill-black" /> Direct WhatsApp Order
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
