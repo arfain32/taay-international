@@ -316,7 +316,7 @@ export default function Home() {
               {siteConfig.email}
             </a>
           </div>
-          <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+          <p>© 2026 {siteConfig.name}. All rights reserved.</p>
         </div>
       </footer>
 
